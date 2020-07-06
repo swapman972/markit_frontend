@@ -1,25 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import welcome from './components/welcome'
+import seasonPick from './components/seasonPick'
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import UserShowPage from './components/UserShowPage';
+import summerSeason from './components/summerSeason';
+import winterSeason from './components/winterSeason';
+
+// import { Container, Navbar, Nav, Button, Form, FormControl, NavDropdown } from 'react-bootstrap';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      {/*
+        <Navbar>
+
+        </Navbar>
+      */}
+      <Route component={Navbar} exact path={["/seasonPick", "/userProfile", "/summer", "/winter"]}/>
+      <Route exact path="/" component={welcome}/>
+      <Route exact path="/seasonPick" component={seasonPick}/>
+      <Route exact path="/userProfile" component={UserShowPage}/>
+      <Route exact path="/summer" component={summerSeason}/>
+      <Route exact path="/winter" component={winterSeason}/>
+    </Router>
   );
 }
 
