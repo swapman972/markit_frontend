@@ -34,12 +34,14 @@ export default class summerSeason extends React.Component{
         newFormToggle: false
     }
 
+    // function to redirect user if he is not logged in 
     handlerRedirect = () =>{
         if(sessionStorage.getItem("userId") === null){
             return <Redirect to='/'/> 
         }
     }
 
+    // function that logs all trains, bikes and events database when the page loads
     componentDidMount = () => {
         fetch('http://localhost:3000/bikes')
         .then(resp => resp.json())
@@ -67,22 +69,27 @@ export default class summerSeason extends React.Component{
         })
     }
 
+    // function to close PopUp
     handlerClosePopUp = () => {
         this.setState({ selectedEvent: null })
     }
 
+    // function to show marker once it is clicked
     handlerEventClick = (event) => {
         this.setState({ selectedEvent: event })
     }
 
+    // function to display all bikes when button is clicked
     handlerDisplayBike = () => {
         this.setState({ bikeDisplayToggle: !this.state.bikeDisplayToggle})
     }
 
+    // function to display all trains when button is clicked
     handlerDisplayTrain = () => {
         this.setState({ trainDisplayToggle: !this.state.trainDisplayToggle})
     }
 
+    // fucntion to filter events
     handlerDropdownFilter = (e) =>{
         if(e.target.value === 'All'){
             this.setState({
@@ -94,6 +101,7 @@ export default class summerSeason extends React.Component{
         })
     }
 
+    // function to change map style when click on styleBtn
     handlerMapStyle = (e) => {
         if(e.target.innerHTML === 'Default'){
             this.setState({ styleForMap: "streets-v11"})
@@ -104,14 +112,17 @@ export default class summerSeason extends React.Component{
         }
     }
 
+    // function to show where the user is located
     handlerUserAreaShow = () =>{
         this.setState({ userArea: !this.state.userArea})
     }
-
+    
+    // function to chow the new event form submission
     handlerNewEventForm = () =>{
         this.setState({ newFormToggle: !this.state.newFormToggle})
     }
-
+    
+    // function to create event once submitted
     handlerCreateEvent = (newEvent) => {
         console.log('new event created: ', newEvent)
 

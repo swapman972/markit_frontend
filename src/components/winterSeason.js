@@ -7,7 +7,6 @@ import { Redirect } from 'react-router-dom'
 import CreateNewEvent from './CreateNewEvent'
 const mapAPIkey = process.env.REACT_APP_MAP_API_KEY
 
-
 export default class winterSeason extends React.Component{
     state = {    
         winterEvents: [],
@@ -25,8 +24,7 @@ export default class winterSeason extends React.Component{
             zoom: 12
         },
         settings: {
-            scrollZoom: false,
-            // doubleClickZoom: false
+            scrollZoom: false
         },
         navSettings: {
             showCompass: false
@@ -34,12 +32,14 @@ export default class winterSeason extends React.Component{
         newFormToggle: false
     }
 
+    // function to redirect user if he is not logged in 
     handlerRedirect = () =>{
         if(sessionStorage.getItem("userId") === null){
             return <Redirect to='/'/> 
         }
     }
 
+    // function that logs all trains and events database when the page loads
     componentDidMount = () => {
         fetch('http://localhost:3000/trains')
         .then(resp => resp.json())
@@ -59,18 +59,22 @@ export default class winterSeason extends React.Component{
         })
     }
 
+    // function to close PopUp
     handlerClosePopUp = () => {
         this.setState({ selectedEvent: null })
     }
 
+    // function to show marker once it is clicked
     handlerEventClick = (event) => {
         this.setState({ selectedEvent: event })
     }
     
+    // function to display all trains when button is clicked
     handlerDisplayTrain = () => {
         this.setState({ trainDisplayToggle: !this.state.trainDisplayToggle})
     }
 
+    // fucntion to filter events
     handlerDropdownFilter = (e) =>{
         if(e.target.value === 'All'){
             this.setState({
@@ -82,6 +86,7 @@ export default class winterSeason extends React.Component{
         })
     }
 
+    // function to change map style when click on styleBtn
     handlerMapStyle = (e) => {
         if(e.target.innerHTML === 'Default'){
             this.setState({ styleForMap: "streets-v11"})
@@ -92,14 +97,17 @@ export default class winterSeason extends React.Component{
         }
     }
 
+    // function to show where the user is located
     handlerUserAreaShow = () =>{
         this.setState({ userArea: !this.state.userArea})
     }
 
+    // function to chow the new event form submission
     handlerNewEventForm = () =>{
         this.setState({ newFormToggle: !this.state.newFormToggle})
     }
 
+    // function to create event once submitted
     handlerCreateEvent = (newEvent) => {
         console.log('new event created: ', newEvent)
 

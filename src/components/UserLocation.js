@@ -7,12 +7,14 @@ export default class UserLocation extends React.Component{
         popupToggle: false
     }
 
+    // function to get exact lat and long whenever uer gives his zipcode
     componentDidMount(){
         fetch(`https://discover.search.hereapi.com/v1/discover?in=circle:40.7533,-73.9069;r=13000&q=${sessionStorage.getItem('zipcode')}&apiKey=BAMub3z8qQq1pGLTfj7NFtP4qbz8BcKuukeljc03ikI`)
         .then(resp => resp.json())
         .then(userLocationData => this.setState ({ userLocation: userLocationData.items}) )
     }
 
+    // function to display where user is located
     handlerPopUpShow = () => {
         this.setState({ popupToggle: !this.state.popupToggle})
     }

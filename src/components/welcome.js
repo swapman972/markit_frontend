@@ -9,10 +9,12 @@ export default class welcome extends React.Component{
         redirectToggle: false
     }
 
+    // function to display logIn/signUp form
     displayFormHandler = () => {
         this.setState({ displayForm: !this.state.displayForm })
     }
 
+    // function to create or logIn user
     createOrFindUser = (e) => {
         e.preventDefault()
         const data = {
@@ -42,6 +44,7 @@ export default class welcome extends React.Component{
         })
     }
 
+    // function to redirect user if he is already logged in 
     handlerRedirect = () =>{
         if(this.state.redirectToggle) { 
             return <Redirect to='/seasonPick'/> 

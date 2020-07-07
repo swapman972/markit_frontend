@@ -7,6 +7,7 @@ export default class seasonPick extends React.Component{
         winterPick: false
     }
 
+    // function to redirect user if he is not logged in 
     handlerRedirect = () =>{
         if(sessionStorage.getItem("userId") === null){
             return <Redirect to='/'/> 
@@ -17,13 +18,13 @@ export default class seasonPick extends React.Component{
         }
     }
 
+    // function to redirect user if he click on summer img
     handlerSummerClick = () => {
-        // console.log('summer')
         this.setState({ summerPick: true})
     }
 
+    // function to redirect user if he click on winter img
     handlerWinterClick = () => {
-        // console.log('winter')
         this.setState({ winterPick: true})
     }
 

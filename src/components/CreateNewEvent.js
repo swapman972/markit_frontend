@@ -7,6 +7,7 @@ export default class CreateNewEvent extends React.Component{
         lastN: sessionStorage.lastN
     }
 
+    // function to create event and stick it to backend
     createEvent = (e) => {
         e.preventDefault()
         if(e.target.title.value === '' || e.target.fullAddress.value === '' || e.target.season.value === '' || e.target.zipcode.value === ''){
@@ -37,21 +38,6 @@ export default class CreateNewEvent extends React.Component{
             // console.log(newEvent)
             this.props.handlerCreateEvent(newEvent)
         })
-
-        // fetch(`http://localhost:3000/events`, {
-        //     method: 'PATCH', 
-        //     headers: {
-        //       'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify(data),
-        // })
-        // .then(resp => resp.json())
-        // .then(data => {
-        //     sessionStorage.setItem("firstN", data.firstN);
-        //     sessionStorage.setItem("lastN", data.lastN);
-        //     sessionStorage.setItem("zipcode", data.zipcode);
-        //     alert('Your profile got updated!')
-        // })
     }
 
     render(){

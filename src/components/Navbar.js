@@ -7,6 +7,7 @@ export default class Navbar extends React.Component {
         logOutToggle: false
     }
 
+    // function to redirect user when log out is clicked
     handlerLogOut = () => {
         sessionStorage.clear()
         this.setState({ logOutToggle: !this.state.logOutToggle})

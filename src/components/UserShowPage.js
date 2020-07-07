@@ -9,17 +9,20 @@ export default class UserShowPage extends React.Component{
         zipcode: sessionStorage.zipcode
     }
 
+    // function to redirect user if he is not logged in 
     handlerRedirect = () =>{
         if(sessionStorage.getItem("userId") === null){
             return <Redirect to='/'/> 
         }
     }
 
+    // function to follow the change happening in the edit user form
     handleChange = (event) => {
         const target = event.target.name;
         this.setState({ [target]: target.value });
     }
 
+    // function to delete user from backend and redirect to log in
     handleDeleteUser = () => {
         fetch(`http://localhost:3000/users/${sessionStorage.userId}`, {
             method: 'DELETE', 
@@ -34,6 +37,7 @@ export default class UserShowPage extends React.Component{
         })
     }
 
+    // function to update user when update is submitted 
     updateUser = (e) => {
         e.preventDefault()
         if(e.target.firstN.value === '' || e.target.lastN.value === '' || e.target.zipcode.value === ''){

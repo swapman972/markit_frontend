@@ -51,9 +51,7 @@ export default class EventPopUp extends React.Component{
     render(){
         return(
             <Popup latitude={this.props.selectedEvent.lat} 
-                longitude={this.props.selectedEvent.lng}
-                // onClose={this.props.ClosePopUp}
-                >
+                longitude={this.props.selectedEvent.lng}>
                 <div>
                     <button className='popUpClose' 
                     onClick={this.props.ClosePopUp}><strong>x</strong></button>

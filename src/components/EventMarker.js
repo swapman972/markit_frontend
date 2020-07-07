@@ -3,6 +3,7 @@ import {Marker} from "react-map-gl"
 
 export default class EventPopUp extends React.Component{
 
+    // function to associate img to event depending on category
     imgForCategory = (event) => {
         switch (event.category) {
             case 'Train Station':
