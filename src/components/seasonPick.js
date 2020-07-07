@@ -43,6 +43,14 @@ export default class seasonPick extends React.Component{
                         onClick={this.handlerSummerClick}/>
                     </div>
                 </div>
+                    <div className='seasonPickText'>
+                        <p>
+                            Winter or Summer activities? 
+                        </p>
+                        <p>
+                            The choice is yours!
+                        </p>
+                    </div>
             </div>
         )
     }

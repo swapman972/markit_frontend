@@ -58,7 +58,7 @@ export default class welcome extends React.Component{
                 <div>
                     <h1 className='welcome'><strong>Welcome to MarkIt!</strong></h1>
                     <p className='welcomeMess'>This website will find local events/venue 
-                        for you to attend/visit and enjoy your free time in New York!</p>
+                        for you to attend/visit and enjoy your free time in New York City!</p>
                     <p className='sentOff'>You will never be bored again!</p>
                     {this.state.displayForm ?
                     <form id='createForm' className="form-inline" onSubmit={this.createOrFindUser}>
